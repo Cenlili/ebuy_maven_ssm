@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.cn.mybatis.test1.dao.userMapper"就是com.cn.mybatis.test1.dao(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.lcvc.ebuy_maven_ssm.dao.ProductTypeDao">
+
+    <select id="getProductTypeList" resultType="com.lcvc.ebuy_maven_ssm.model.ProductType">
+        select * from ProductType order by id asc
+    </select>
+
+    <delete id="deleteProductType">
+        delete from producttype where id=#{id}
+    </delete>
+
+    <insert id="saveProductType">
+        insert into producttype(id,name,linkUrl,imageUrl,intro,orderNum) values (null,#{name},#{linkUrl},#{imageUrl},#{intro},#{orderNum})
+    </insert>
+
+    <select id="existsName" resultType="int">
+        select count(id) from producttype where name=#{name}
+    </select>
+
+
+    <select id="getProductType" resultType="com.lcvc.ebuy_maven_ssm.model.ProductType">
+        select * from producttype where id=#{id}
+    </select>
+
+
+    <update id="updateProductType">
+        update producttype set name=#{name} where id=#{id}
+    </update>
+
+    <select id="existsProductType" resultType="int">
+        select count(id) from producttype where name=#{name} and id!=#{id}
+    </select>
+
+</mapper>
