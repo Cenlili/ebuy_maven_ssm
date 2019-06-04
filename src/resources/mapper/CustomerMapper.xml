@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.cn.mybatis.test1.dao.userMapper"就是com.cn.mybatis.test1.dao(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.lcvc.ebuy_maven_ssm.dao.CustomerDao">
+
+	<!--显示客户列表-->
+	<select id="getCustomerList" resultType="com.lcvc.ebuy_maven_ssm.model.Customer">
+		select * from customer order by id asc
+	</select>
+
+	<!--删除指定客户-->
+	<delete id="deleteCustomer">
+		delete from customer where id=#{id}
+	</delete>
+
+	<!-- 添加指定客户-->
+	<insert id="saveCustomer">
+		insert into customer(id,username,name,tel,address,email,zip) values (null,#{username},#{name},#{tel},#{address},#{email},#{zip})
+	</insert>
+
+	<!-- 添加指定客户姓名（重名）-->
+	<select id="existsName" resultType="int">
+		select count(id) from customer where name=#{name}
+	</select>
+
+	<!-- 添加指定客户账户名（重名）-->
+	<select id="existsUsername" resultType="int">
+		select count(id) from customer where name=#{username}
+	</select>
+
+	<!--修改制定客户-->
+	<select id="getCustomer" resultType="com.lcvc.ebuy_maven_ssm.model.Customer">
+		select * from customer where id=#{id}
+	</select>
+
+	<!--修改制定产品-->
+	<update id="updateCustomer">
+		update customer set username=#{username} where id=#{id}
+	</update>
+
+	<select id="existsCustomer" resultType="int">
+		select count(id) from customer where username=#{username} and id!=#{id}
+	</select>
+</mapper>

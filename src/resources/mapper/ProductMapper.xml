@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+例如namespace="com.cn.mybatis.test1.dao.userMapper"就是com.cn.mybatis.test1.dao(包名)+userMapper(userMapper.xml文件去除后缀)
+ -->
+<mapper namespace="com.lcvc.ebuy_maven_ssm.dao.ProductDao">
+
+    <resultMap id="product" type="Product">
+        <association property="productType" javaType="ProductType" column="productTypeId" select="com.lcvc.ebuy_maven_ssm.dao.ProductTypeDao.getProductType">
+        </association>
+        <association property="creator" javaType="Admin" column="creatorId" select="com.lcvc.ebuy_maven_ssm.dao.AdminDao.getAdmin">
+        </association>
+    </resultMap>
+
+    <select id="getProductList" resultMap="product">
+        select * from Product order by orderNum asc,createTime desc
+    </select>
+
+   <!-- <insert id="saveProduct">
+        insert into product(id,picUrl,name,productType,price,number,click) values (null,#{picUrl},#{name},#{productType}#{price},#{number},#{click})
+    </insert>-->
+
+    <!--删除指定产品-->
+    <delete id="deleteProduct">
+        delete from product where id=#{id}
+    </delete>
+
+
+    <!-- 添加指定产品-->
+    <insert id="saveProduct">
+        insert into product(id,picUrl,name,createTime,productTypeId,price,originalPrice,number,click) values (null,#{picUrl},#{name},#{createTime},#{productTypeId},#{price},#{originalPrice},#{number},#{click})
+    </insert>
+
+   <!-- 添加指定产品（重命名）-->
+    <select id="existsName" resultType="int">
+        select count(id) from product where name=#{name}
+    </select>
+
+   <!--修改制定产品-->
+    <select id="getProduct" resultType="com.lcvc.ebuy_maven_ssm.model.Product">
+        select * from product where id=#{id}
+    </select>
+
+    <!--修改制定产品-->
+    <update id="updateProduct" parameterType="Product">
+        update product
+        <set>
+            <if test="productTypeId!=null ">productTypeId=#{product.id},</if>
+            <if test="name!=null and name.length()>0">name=#{name},</if>
+            <if test="orderNum!=null">orderNum=#{orderNum},</if>
+            <if test="description!=null">description=#{description},</if>
+            <if test="content!=null">content=#{content},</if>
+            <if test="price!=null">price=#{price},</if>
+            <if test="originalPrice!=null and originalPrice>0">originalPrice=#{originalPrice},</if>
+            <if test="picUrl!=null">picUrl=#{picUrl},</if>
+            <if test="number!=null and number>0">number=#{number},</if>
+            <if test="click!=null and click>0">click=#{click},</if>
+            <if test="createTime!=null">createTime=#{createTime},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <select id="existsProduct" resultType="int">
+        select count(id) from product where name=#{name} and id!=#{id}
+    </select>
+
+
+    <select id="total" resultType="int">
+        select count(id) from product
+    </select>
+
+    <select id="getPartlist" resultMap="product">
+        select * from product order by id asc limit #{offset},#{length}
+    </select>
+</mapper>

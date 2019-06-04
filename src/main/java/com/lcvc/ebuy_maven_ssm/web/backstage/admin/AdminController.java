@@ -5,7 +5,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import com.lcvc.ebuy_maven_ssm.model.Admin;
-import com.lcvc.ebuy_maven_ssm.model.exception.MyWebException;
 import com.lcvc.ebuy_maven_ssm.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

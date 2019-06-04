@@ -93,12 +93,21 @@
         <tbody>
         <c:forEach var="producttype" items="${requestScope.list}">
             <tr>
-                <td><input name="" type="checkbox" value=""/></td>
+                <td ><input name="" type="checkbox" value=""/></td>
                 <td>${producttype.name}</td>
-                <td>${producttype.imageUrl}</td>
-                <td>${producttype.linkUrl}</td>
-                <td>${producttype.intro}</td>
-                <td>${producttype.orderNum}</td>
+                <td>
+                    <c:choose>
+                <c:when test="${producttype.imageUrl==null||producttype.imageUrl==''}">
+                    <td>无图片</td>
+                </c:when>
+                <c:otherwise>
+                   <img src="${producttype.imageUrl}" width="50px" height="50px"/>
+                    </c:otherwise>
+                    </c:choose>
+                    </td>
+                <td style="width:25%;">${producttype.linkUrl}</td>
+                <td style="width:10%;">${producttype.orderNum}</td>
+                <td style="width:10%;">${producttype.productNumber}</td>
                 <td><a href="<%=basePath%>backstage/producttype/toUpdateProductType?id=${producttype.id}" class="tablelink">修改</a>  <a id="${producttype.name}" name="deleteProductType"  href="<%=basePath%>backstage/producttype/doDeleteProductType?id=${producttype.id}" class="tablelink">删除</a></td>
                <%-- <td><a href="backstage/producttype/toUpdateProductType?id=${producttype.id}" class="tablelink">修改</a> <a id="${producttype.username}" name="deleteproducttype"  href="backstage/producttype/doDeleteProductType?id=${producttype.id}" class="tablelink"> 删除</a></td>
            --%>

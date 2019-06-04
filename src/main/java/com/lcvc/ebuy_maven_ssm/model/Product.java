@@ -9,7 +9,10 @@ package com.lcvc.ebuy_maven_ssm.model;
 public class Product implements java.io.Serializable {
 
 	private Integer id;
+
+
 	private ProductType productType;//所属产品类别
+	private Integer productTypeId;
 	private String name;//产品名称
 	private Integer orderNum;//优先级
 	private String description;//产品描述
@@ -24,7 +27,17 @@ public class Product implements java.io.Serializable {
 	private Admin creator;//创建产品管理员
 	private Admin finalEditor;//最后编辑管理员
 	private java.util.Date updateTime;//最后编辑时间
-	
+
+
+	public ProductType getProductType() {
+		return productType;
+	}
+
+	public void setProductType(ProductType productType) {
+		this.productType = productType;
+	}
+
+
 	//非数据库字段
 	//private List<ProductOrder> productOrders = new ArrayList<ProductOrder>();//该产品对应的订单
 	//private Float totalPriceOfTrade;//该产品的总交易额
@@ -52,12 +65,13 @@ public class Product implements java.io.Serializable {
 
 	
 
-	public ProductType getProductType() {
-		return productType;
+
+	public Integer getProductTypeId(){
+		return productTypeId;
 	}
 
-	public void setProductType(ProductType productType) {
-		this.productType = productType;
+	public void setProductTypeId(Integer productTypeId){
+		this.productTypeId=productTypeId;
 	}
 
 	public String getName() {

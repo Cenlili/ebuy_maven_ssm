@@ -4,6 +4,7 @@ import com.lcvc.ebuy_maven_ssm.model.Admin;
 import com.lcvc.ebuy_maven_ssm.model.ProductType;
 import com.lcvc.ebuy_maven_ssm.service.ProductTypeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -41,19 +42,17 @@ public class ProductTypeController {
 
     //执行产品分类添加请求
     @RequestMapping(value = "/backstage/producttype/doAddProductType", method = RequestMethod.POST)
-    public String doAddProductType(HttpServletRequest request,ProductType producttype){
+    public String doAddProductType(Model model, ProductType producttype){
         producttype.setName(producttype.getName().trim());
         if(producttype.getName().length()==0){
-            request.setAttribute("myMessage","产品分类创建失败:账户名不能为空");
-        }else if(producttype.getName().length()==0){
-            request.setAttribute("myMessage","产品分类创建失败:姓名不能为空");
+            model.addAttribute("myMessage","产品分类创建失败:账户名不能为空");
         }else if(productTypeService.existsName(producttype.getName())){
-            request.setAttribute("myMessage","产品分类创建失败:分类名已存在，请选择其他的分类名");
+            model.addAttribute("myMessage","产品分类创建失败:分类名已存在，请选择其他的分类名");
         }else{
             if(productTypeService.saveProductType(producttype)){
-                request.setAttribute("myMessage","产品分类创建成功");
+                model.addAttribute("myMessage","产品分类创建成功");
             }else{
-                request.setAttribute("myMessage","产品分类创建失败");
+                model.addAttribute("myMessage","产品分类创建失败");
             }
         }
         return "/jsp/backstage/producttype/producttypeadd.jsp";
@@ -70,13 +69,14 @@ public class ProductTypeController {
     @RequestMapping(value = "/backstage/producttype/doUpdateProductType", method = RequestMethod.POST)
     public String doUpdateProductType(HttpServletRequest request,ProductType producttype){
         producttype.setName(producttype.getName().trim());
-        if(producttype.getName().length()==0){
-            request.setAttribute("myMessage","产品分类修改失败:分类名不能为空");
-        }else if(productTypeService.existsName(producttype.getName())){
-            request.setAttribute("myMessage","产品分类修改失败:分类名不能重名");
+        if(producttype.getName().length()==0) {
+            request.setAttribute("myMessage", "产品分类修改失败:分类名不能为空");
+        }else if (producttype.getImageUrl().length()==0) {
+            request.setAttribute("myMessage", "产品分类修改失败:必须上传图片");
         }else{
             if(productTypeService.updateProductType(producttype)){
                 request.setAttribute("myMessage","产品分类修改成功");
+
             }else{
                 request.setAttribute("myMessage","产品分类修改失败");
             }

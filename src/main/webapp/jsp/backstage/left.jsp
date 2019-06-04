@@ -64,7 +64,7 @@
         </div>
         <ul class="menuson">
             <li><cite></cite><a href="<%=basePath%>backstage/producttype/toManageProductType" target="rightFrame">产品分类管理</a><i></i></li>
-            <li><cite></cite><a href="<%=basePath%>admin/product/productmanage" target="rightFrame">产品管理</a><i></i></li>
+            <li><cite></cite><a href="<%=basePath%>backstage/product/toProductPage" target="rightFrame">产品管理</a><i></i></li>
         </ul>
     </dd>
 
@@ -73,7 +73,7 @@
             <span><img src="images/leftico01.png" /></span>客户模块
         </div>
         <ul class="menuson">
-            <li><cite></cite><a href="<%=basePath%>admin/customer/customermanage" target="rightFrame">客户管理</a><i></i></li>
+            <li><cite></cite><a href="<%=basePath%>backstage/customer/toManageCustomer" target="rightFrame">客户管理</a><i></i></li>
         </ul>
     </dd>
 
