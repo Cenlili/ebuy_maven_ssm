@@ -1,5 +1,7 @@
 package com.lcvc.ebuy_maven_ssm.service;
 
+import com.lcvc.ebuy_maven_ssm.model.Product;
+
 import java.util.Map;
 
 public interface ShoppingCartService {
@@ -16,5 +18,13 @@ public interface ShoppingCartService {
      * 获取购物车中的信息
      * @return
      */
-    Map<Integer,Integer> getShoppingCart();
+    Map<Product,Integer> getShoppingCart();
+
+
+    /**
+     * 从购物车中移除商品
+     * @param productId 商品的主键
+     */
+    void removeProduct(Integer productId);
 }
+

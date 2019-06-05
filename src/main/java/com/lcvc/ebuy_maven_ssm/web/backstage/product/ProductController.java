@@ -38,13 +38,13 @@ public class ProductController {
         model.addAttribute("maxPage",productService.maxPage());
         return "/jsp/backstage/productmanage/productmanage.jsp";
     }
-
+/*
     //跳转到产品管理页面
     @RequestMapping(value = "backstage/product/toManageProduct", method = RequestMethod.GET)
     public String toManageProduct(HttpServletRequest request) {
         request.setAttribute("list", productService.getProductList());
         return "/jsp/backstage/productmanage/productmanage.jsp";
-    }
+    }*/
 
     //执行删除产品操作
     @ResponseBody

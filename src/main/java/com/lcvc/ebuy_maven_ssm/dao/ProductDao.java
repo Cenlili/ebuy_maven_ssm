@@ -18,7 +18,7 @@ public interface ProductDao {
 
 
     /**
-     * 删除指定产品分类
+     * 删除指定产品
      * @param id 关键字
      * @return 删除了多少条记录
      */
@@ -74,6 +74,13 @@ public interface ProductDao {
      * @return
      */
     int total();
+
+    /**
+     * 从数据库中读取制定的产品对象
+     * @param id
+     * @return
+     */
+    Product get(int id);
 }
 
 
