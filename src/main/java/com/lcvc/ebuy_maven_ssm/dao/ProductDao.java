@@ -81,6 +81,13 @@ public interface ProductDao {
      * @return
      */
     Product get(int id);
+
+    /**
+     * 返回最新发布的N条产品记录
+     * @param pageSize
+     * @return
+     */
+    List<Product> getNewTopProductList(Integer pageSize);
 }
 
 

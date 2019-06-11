@@ -66,5 +66,13 @@ public interface ProductService {
      * @return
      */
     int maxPage();
+
+
+    /**
+     * 返回最新发布的N条记录
+     * @param pageSize
+     * @return
+     */
+    List<Product> getNewTopProductList(Integer pageSize);
     }
 

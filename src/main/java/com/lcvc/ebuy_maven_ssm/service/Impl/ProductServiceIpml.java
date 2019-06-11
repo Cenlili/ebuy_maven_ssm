@@ -117,4 +117,8 @@ public class ProductServiceIpml implements ProductService{
         }
         return maxPage;
     }
+    @Override
+    public List<Product> getNewTopProductList(Integer pageSize){
+        return productDao.getNewTopProductList(8);
+    }
 }
