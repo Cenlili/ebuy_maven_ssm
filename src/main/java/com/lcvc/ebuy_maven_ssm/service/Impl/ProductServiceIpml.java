@@ -121,4 +121,21 @@ public class ProductServiceIpml implements ProductService{
     public List<Product> getNewTopProductList(Integer pageSize){
         return productDao.getNewTopProductList(8);
     }
+
+    @Override
+    public List<Product> getHotProductList(Integer pageSize){
+        return productDao.getHotProductList(8);
+    }
+
+    @Override
+    public List<Product> getProductByid(Integer id) {
+        return productDao.getProductByid(id);
+    }
+
+    @Override
+    public List<Product> getProductTypeList(Integer id){
+        return productDao.getProductTypeList(id);
+    }
+
+
 }

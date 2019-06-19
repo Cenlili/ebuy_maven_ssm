@@ -6,7 +6,7 @@
 </head>
 <body>
 	<div class="wrap">
-		<iframe src="header.html" style="height: 118px;"></iframe>
+		<iframe src="header.jsp" style="height: 118px;"></iframe>
 		<div class="content">
 			<div class="thead">
 				<em class="th1">购物车</em>
@@ -21,7 +21,7 @@
 						<input type="checkbox" class="check">
 					</span>
 					<span class="td td2">
-						<a href="shopdetial.html"><img alt="" src="resources/images/foods/41.jpg"></a>
+						<a href="shopdetial.jsp"><img alt="" src="resources/images/foods/41.jpg"></a>
 						<span>干煸四季豆</span>
 					</span>
 					<span class="td td3">
@@ -47,7 +47,7 @@
 						<input type="checkbox" class="check" checked="checked">
 					</span>
 					<span class="td td2">
-						<a href="shopdetial.html"><img alt="" src="resources/images/foods/41.jpg"></a>
+						<a href="shopdetial.jsp"><img alt="" src="resources/images/foods/41.jpg"></a>
 						<span>干煸四季豆</span>
 					</span>
 					<span class="td td3">
@@ -73,7 +73,7 @@
 						<input type="checkbox" class="check" checked="checked">
 					</span>
 					<span class="td td2">
-						<a href="shopdetial.html"><img alt="" src="resources/images/foods/41.jpg"></a>
+						<a href="shopdetial.jsp"><img alt="" src="resources/images/foods/41.jpg"></a>
 						<span>干煸四季豆</span>
 					</span>
 					<span class="td td3">
@@ -99,7 +99,7 @@
 						<input type="checkbox" class="check" checked="checked">
 					</span>
 					<span class="td td2">
-						<a href="shopdetial.html"><img alt="" src="resources/images/foods/41.jpg"></a>
+						<a href="shopdetial.jsp"><img alt="" src="resources/images/foods/41.jpg"></a>
 						<span>干煸四季豆</span>
 					</span>
 					<span class="td td3">
@@ -125,7 +125,7 @@
 						<input type="checkbox" class="check" checked="checked">
 					</span>
 					<span class="td td2">
-						<a href="shopdetial.html"><img alt="" src="resources/images/foods/41.jpg"></a>
+						<a href="shopdetial.jsp"><img alt="" src="resources/images/foods/41.jpg"></a>
 						<span>干煸四季豆</span>
 					</span>
 					<span class="td td3">

@@ -2,6 +2,7 @@ package com.lcvc.ebuy_maven_ssm.web.backstage.product;
 
 import com.lcvc.ebuy_maven_ssm.model.Product;
 import com.lcvc.ebuy_maven_ssm.service.ProductService;
+import com.lcvc.ebuy_maven_ssm.service.ProductTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,10 @@ import java.util.Map;
 public class ProductController {
     @Resource
     private ProductService productService;
+
+    @Resource
+    private ProductTypeService productTypeService;
+
 
 
     @RequestMapping(value = "backstage/product/toProductPage", method = RequestMethod.GET)
@@ -58,8 +63,8 @@ public class ProductController {
 
     //跳转到产品分类添加页面
     @RequestMapping(value = "/backstage/product/toAddProduct", method = RequestMethod.GET)
-    public String toAddProduct(HttpServletRequest request){
-
+    public String toAddProduct(Model model){
+        model.addAttribute("productType",productTypeService.getProductTypeList());
         return "/jsp/backstage/productmanage/productadd.jsp";
     }
 

@@ -77,8 +77,20 @@
         select * from product where id=#{id}
     </select>
 
+    <select id="getProductByid" resultMap="product">
+        select * from product where id=#{id}
+    </select>
+
     <select id="getNewTopProductList" resultType="Product">
         select * from product order by createTime desc limit 0,#{pageSize}
+    </select>
+
+    <select id="getHotProductList" resultType="Product">
+        select * from product order by click desc limit 0,#{pageSize}
+    </select>
+
+    <select id="getProductTypeList" resultType="Product">
+        select * from product where productTypeId=#{productTypeId} 
     </select>
 
 </mapper>

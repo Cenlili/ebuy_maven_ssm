@@ -74,5 +74,27 @@ public interface ProductService {
      * @return
      */
     List<Product> getNewTopProductList(Integer pageSize);
+
+   /**
+     * 返回点击量最多的热门产品记录
+     * @param pageSize
+     * @return
+             */
+    List<Product> getHotProductList(Integer pageSize);
+
+    /**
+     * 按id返回商品信息
+     * @param id
+     * @return
+     */
+    List <Product> getProductByid(Integer id);
+
+    /**
+     * 按产品分类返回商品信息
+     * @param id
+     * @return
+     */
+    List<Product> getProductTypeList(Integer id);
+
     }
 

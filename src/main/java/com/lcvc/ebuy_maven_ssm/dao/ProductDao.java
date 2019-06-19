@@ -75,12 +75,14 @@ public interface ProductDao {
      */
     int total();
 
+
+
     /**
-     * 从数据库中读取制定的产品对象
+     * 从数据库中读取指定的产品对象
      * @param id
      * @return
      */
-    Product get(int id);
+    Product get(Integer id);
 
     /**
      * 返回最新发布的N条产品记录
@@ -88,6 +90,26 @@ public interface ProductDao {
      * @return
      */
     List<Product> getNewTopProductList(Integer pageSize);
+
+    /**
+     * 返回点击量最多的热门产品记录
+     * @param pageSize
+     * @return
+     */
+    List<Product> getHotProductList(Integer pageSize);
+    /**
+     * 从数据库中读取指定的产品对象
+     * @param id
+     * @return
+     */
+    List<Product> getProductByid(Integer id);
+
+    /**
+     * 按产品分类返回商品信息
+     * @param id
+     * @return
+     */
+    List<Product> getProductTypeList(Integer id);
 }
 
 

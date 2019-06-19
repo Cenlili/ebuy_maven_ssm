@@ -20,7 +20,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService{
 
     @Override
     public void putProduct(Integer productId, Integer number) {
-        Product product=productDao.get(productId); //从数据库中读取产品对象。注意：此处暂时不考虑对象是否存在
+       Product product=productDao.get(productId); //从数据库中读取产品对象。注意：此处暂时不考虑对象是否存在
         if(map.containsKey(product)){//如果包含相应商品
             map.put(product,map.get(product)+number);//将商品的数量相加
         }else{//如果不包含相应商品
