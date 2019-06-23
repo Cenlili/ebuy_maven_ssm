@@ -110,6 +110,13 @@ public interface ProductDao {
      * @return
      */
     List<Product> getProductTypeList(Integer id);
+
+    /**
+     * 产品分类列表分页
+     * @param page
+     * @return
+     */
+    List<Product> getProductTypePage(Integer page);
 }
 
 

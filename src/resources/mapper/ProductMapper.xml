@@ -93,4 +93,8 @@
         select * from product where productTypeId=#{productTypeId} 
     </select>
 
+    <select id="getProductTypePage" resultType="Product">
+        select * from product where productTypeId=#{productTypeId} limit 0,#{pageSize}
+    </select>
+
 </mapper>

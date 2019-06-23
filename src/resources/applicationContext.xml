@@ -24,7 +24,7 @@
     <!-- mysql连接的基本配置，使用的是spring提供的 DriverManagerDataSource-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="username" value="user"></property>
+        <property name="username" value="root"></property>
         <property name="password" value="123456"></property>
         <property name="url" value="jdbc:mysql://localhost:3306/ebuy_maven_ssm?characterEncoding=utf-8"></property>
     </bean>

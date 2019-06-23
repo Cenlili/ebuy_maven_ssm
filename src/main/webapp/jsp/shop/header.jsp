@@ -28,8 +28,8 @@
 			<ul>
 				<li class="cur"><a href="<%=basePath%>proscenium/toIndex" target="top">全部分类</a></li>
 				<li><a href="<%=basePath%>proscenium/toIndex" target="top">首页</a></li>
-				<li><a href="shoplists.html" target="top" style="color: #d2364c;">今日新品</a></li>
-				<li><a href="shoplists.html" target="top">热门订单</a></li>
+				<li><a href="<%=basePath%>proscenium/toNewShop" target="top" style="color: #d2364c;">今日新品</a></li>
+				<li><a href="<%=basePath%>proscenium/toHotShop" target="top">热门订单</a></li>
 				<li><a href="shoplists.html" target="top">限时秒杀</a></li>
 				<li><a href="shoplists.html" target="top">拼团</a></li>
 				<li><a href="shoplists.html" target="top">特惠</a></li>

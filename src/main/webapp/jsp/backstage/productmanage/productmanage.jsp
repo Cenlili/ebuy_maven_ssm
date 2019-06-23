@@ -151,7 +151,7 @@
         <li class="paginItem"><a href="<%=basePath%>backstage/product/toProductPage?page=1" >首页</a> </li>
             <li class="paginItem"><a href="<%=basePath%>backstage/product/toProductPage?page=${requestScope.page-1}" >上一页</a> </li>
             <li class="paginItem"><a href="<%=basePath%>backstage/product/toProductPage?page=${requestScope.page+1}" >下一页</a> </li>
-            <li class="paginItem"><a href="<%=basePath%>backstage/product/toProductPage?page=${requestScope.maxPage}" >尾页</a> </li>
+            <li class="paginItem"> <a href="<%=basePath%>backstage/product/toProductPage?page=${requestScope.maxPage}">尾页</a> </li>
         </ul>
         </ul>
 

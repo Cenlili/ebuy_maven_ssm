@@ -96,5 +96,11 @@ public interface ProductService {
      */
     List<Product> getProductTypeList(Integer id);
 
+    /**
+     * 产品分类列表分页
+     * @param pageSize
+     * @return
+     */
+    List<Product> getProductTypePage(Integer pageSize);
     }
 

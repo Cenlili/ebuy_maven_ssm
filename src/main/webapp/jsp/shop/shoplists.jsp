@@ -39,11 +39,10 @@
 					</c:forEach>
 				</div>
 				<div class="pager">
-					<button>&lt;&lt;</button>
-					<button>1</button>
-					<button>2</button>
-					<button>3</button>
-					<button>&gt;&gt;</button>
+					<button><a href="<%=basePath%>proscenium/toProductTypePage?page=${requestScope.page-1}" >&lt;&lt;</a></button>
+					<button><a href="<%=basePath%>proscenium/toProductTypePage?page=1" >1</a></button>
+					<button><a href="<%=basePath%>proscenium/toProductTypePage?page=2">2</a></button>
+					<button><a href="<%=basePath%>proscenium/toProductTypePage?page=${requestScope.page+1}">&gt;&gt;</a></button>
 				</div>
 			</div>
 			<br>

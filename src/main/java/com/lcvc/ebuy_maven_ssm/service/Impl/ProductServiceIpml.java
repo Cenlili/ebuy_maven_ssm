@@ -137,5 +137,11 @@ public class ProductServiceIpml implements ProductService{
         return productDao.getProductTypeList(id);
     }
 
+    @Override
+    public List<Product> getProductTypePage(Integer page){
+        int pagesize=4;//每页显示10条记录
+        int offset=(page-1)*pagesize+1;//每页开始的记录数位置（仅在业务层使用，不考虑数据库）
+        return  productDao.getPartlist(offset-1,pagesize);//数据库记录位置从0算起
+    }
 
 }
