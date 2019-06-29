@@ -12,6 +12,13 @@ import java.util.List;
 public interface CustomerDao {
 
     /**
+     * 前台登录
+     * @param username
+     * @param password
+     * @return
+     */
+    Customer login(@Param(value = "username") String username, @Param(value = "password") String password);
+    /**
      * 返回所有的管理客户集合
      *
      * @return 以List方式返回

@@ -1,14 +1,22 @@
 package com.lcvc.ebuy_maven_ssm.web.proscenium;
 
+import com.lcvc.ebuy_maven_ssm.model.Customer;
 import com.lcvc.ebuy_maven_ssm.model.Product;
+import com.lcvc.ebuy_maven_ssm.service.CustomerService;
 import com.lcvc.ebuy_maven_ssm.service.ProductService;
 import com.lcvc.ebuy_maven_ssm.service.ProductTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class IndexController {
@@ -19,6 +27,28 @@ public class IndexController {
     @Resource
     private ProductService productService;
 
+    @Resource
+    private CustomerService customerService;
+
+
+    /*
+	 * 用于判断登录
+	 */
+    @ResponseBody
+    @RequestMapping(value = "/proscenium/doLogin", method = RequestMethod.POST)
+    public Map<String,Object> doLogin(String username, String password, HttpSession session) {
+        Map<String,Object> map=new HashMap<String,Object>();
+        Customer customer=customerService.login(username,password);
+        if(customer!=null){
+            session.setAttribute("customer", customer);
+            map.put("status",1);//	自定义值：status。如果为1表示登录成功，若干为0表示登录失败
+        }else{
+            map.put("status",0);//	自定义值：status。如果为1表示登录成功，若干为0表示登录失败
+            //return "/jsp/backstage/login.jsp";
+            map.put("myMessage","登录失败，密码错误");
+        }
+        return  map;
+    }
 
     @RequestMapping(value = "/proscenium/toProductTypePage", method = RequestMethod.GET)
     public String toProductTypePage(Model model,Integer page) {
@@ -71,4 +101,32 @@ public class IndexController {
         model.addAttribute("hotShops",productService.getHotProductList(8));
         return "jsp/shop/shophot.jsp";
     }
+
+    //注册页面
+    @RequestMapping(value = "/proscenium/toLogon", method = RequestMethod.GET)
+    public String toLogon(){
+        return "/jsp/shop/signup.jsp";
+    }
+    @RequestMapping(value = "/proscenium/doLogon", method = RequestMethod.POST)
+    public String doLogon(Model model,String username, Customer customer) {
+        Customer customer1=new Customer();
+        customer1.setCreateTime(new Date());
+        if (customer.getUsername().trim().length()==0) {
+            model.addAttribute("myMessage", "账户名不能为空，请重新输入 ");
+        }else if(customer.getPassword().trim().length()==0) {
+            model.addAttribute("myMessage", "密码不能为空，请重新输入");
+        }  else if(customer.getTel().trim().length()==0){
+            model.addAttribute("myMessage","联系方式不能为空，请重新输入");
+        } else if (customerService.existsUsername(customer.getUsername())) {
+            model.addAttribute("myMessage", "账户名不能重名，请重新输入");
+        } else {
+            customerService.saveCustomer(customer);
+            model.addAttribute("myMessage", "注册成功！！！");
+        }
+        return "/jsp/shop/signup.jsp";
+    }
+
+
+
 }
+

@@ -120,7 +120,7 @@
                 <td ><li style="color: red">${product.price}</li>
                   <li style="color: rgba(75,79,88,0.52)"><s>${product.originalPrice}</s></li></td>
 
-                <td >${product.creator.name}</td>
+                <td >${admin.name}</td>
                 <td >
                     <c:choose>
                         <c:when test="${product.onSale==true}">

@@ -14,6 +14,14 @@ import java.util.List;
 public interface CustomerService {
 
     /**
+     * 根据账户名和密码去数据库查询，进行登录判断
+     * @param username 用户名
+     * @param password 密码
+     * @return null表示登录失败
+     */
+    public Customer login( String username,String password);
+
+    /**
      * 返回所有的管理账户集合
      *
      * @return 以List方式返回

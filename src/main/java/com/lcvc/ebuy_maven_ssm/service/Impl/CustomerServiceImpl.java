@@ -13,6 +13,18 @@ public class CustomerServiceImpl implements CustomerService {
     @Resource
     private CustomerDao customerDao;
 
+    /**
+     * 前台登录
+     *
+     * @param username 用户名
+     * @param password 密码
+     * @return
+     */
+    @Override
+    public Customer login(String username, String password) {
+        Customer customer = customerDao.login(username, password);
+        return customer;
+    }
 
     /**
      * 返回所有的管理账户集合

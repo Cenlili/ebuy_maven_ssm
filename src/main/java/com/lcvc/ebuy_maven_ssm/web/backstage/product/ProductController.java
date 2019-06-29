@@ -61,7 +61,7 @@ public class ProductController {
        return map;
         }
 
-    //跳转到产品分类添加页面
+    //跳转到产品添加页面
     @RequestMapping(value = "/backstage/product/toAddProduct", method = RequestMethod.GET)
     public String toAddProduct(Model model){
         model.addAttribute("productType",productTypeService.getProductTypeList());
@@ -69,7 +69,7 @@ public class ProductController {
     }
 
 
-    //执行产品分类添加请求
+    //执行产品添加请求
     @RequestMapping(value = "/backstage/product/doAddProduct", method = RequestMethod.POST)
     public String doAddProduct(Model model, Product product){
         product.setName(product.getName().trim());
@@ -87,14 +87,15 @@ public class ProductController {
         return "/jsp/backstage/productmanage/productadd.jsp";
     }
 
-    //跳转到产品分类编辑页面
+    //跳转到产品编辑页面
     @RequestMapping(value = "/backstage/product/toUpdateProduct", method = RequestMethod.GET)
     public String toUpdateProduct(HttpServletRequest request,Integer id){
         request.setAttribute("product",productService.getProduct(id));
+        request.setAttribute("productTyped",productTypeService.getProductTypeList());
         return "/jsp/backstage/productmanage/productupdate.jsp";
     }
 
-    //执行产品分类编辑请求
+    //执行产品编辑请求
     @RequestMapping(value = "/backstage/product/doUpdateProduct", method = RequestMethod.POST)
     public String doUpdateProductType(HttpServletRequest request,Product product){
         product.setName(product.getName().trim());

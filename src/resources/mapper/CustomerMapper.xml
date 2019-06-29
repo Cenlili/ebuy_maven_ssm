@@ -5,6 +5,11 @@
  -->
 <mapper namespace="com.lcvc.ebuy_maven_ssm.dao.CustomerDao">
 
+<!--前台登录-->
+	<select id="login" resultType="com.lcvc.ebuy_maven_ssm.model.Customer">
+		select * from customer where username=#{username} and password=#{password}
+	</select>
+
 	<!--显示客户列表-->
 	<select id="getCustomerList" resultType="com.lcvc.ebuy_maven_ssm.model.Customer">
 		select * from customer order by id asc
@@ -17,7 +22,7 @@
 
 	<!-- 添加指定客户-->
 	<insert id="saveCustomer">
-		insert into customer(id,username,name,tel,address,email,zip) values (null,#{username},#{name},#{tel},#{address},#{email},#{zip})
+		insert into customer(id,username,password,name,tel,address,email,zip) values (null,#{username},#{password},#{name},#{tel},#{address},#{email},#{zip})
 	</insert>
 
 	<!-- 添加指定客户姓名（重名）-->
@@ -36,8 +41,19 @@
 	</select>
 
 	<!--修改制定产品-->
-	<update id="updateCustomer">
-		update customer set username=#{username} where id=#{id}
+	<update id="updateCustomer" parameterType="Customer">
+		update customer
+		<set>
+			<if test="username!=null and username.length()>0">username=#{username},</if>
+			<if test="name!=null and name.length()>0">name=#{name},</if>
+			<if test="picUrl!=null">picUrl=#{picUrl},</if>
+			<if test="tel!=null">tel=#{tel},</if>
+			<if test="address!=null">address=#{address},</if>
+			<if test="zip!=null">zip=#{zip},</if>
+			<if test="email!=null">email=#{email},</if>
+			<if test="intro!=null">intro=#{intro},</if>
+		</set>
+		where id=#{id}
 	</update>
 
 	<select id="existsCustomer" resultType="int">

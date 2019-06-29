@@ -14,8 +14,8 @@
 	<div class="header">
 		<div class="toolbar">
 			<a href="<%=basePath%>proscenium/toIndex" target="top">&nbsp;首页&nbsp;</a>
-			<a href="<%=basePath%>jsp/shop/signin.html" target="top">&nbsp;登录/注册&nbsp;</a>
-			<a href="<%=basePath%>jsp/shop/shopcart.html" target="top">&nbsp;购物车&nbsp;</a>
+			<a href="<%=basePath%>jsp/shop/signin.jsp" target="top">&nbsp;登录/注册&nbsp;</a>
+			<a href="<%=basePath%>jsp/shop/shopcart.jsp" target="top">&nbsp;购物车&nbsp;</a>
 		</div>
 		<div class="content">
 			<img alt="" src="resources/images/logo.png">

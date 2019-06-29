@@ -81,29 +81,11 @@
         <ul class="forminfo">
             <li>
                 <label>*产品分类</label>
-                <select name="productId"  class="dfinput" >
+                <select name="productTypeId" id="productTypeId" class="dfinput" >
                     <option value="">请选择</option>
-
-                    <option value="29"
-
-                    >五花肉</option>
-
-                    <option value="27"
-
-                    >海鲜</option>
-
-                    <option value="30"
-
-                    >五花肉</option>
-
-                    <option value="6"
-
-                    >小吃快餐</option>
-
-                    <option value="25"
-                            selected="selected"
-                    >甜点饮品</option>
-
+                    <c:forEach var="productTyped" items="${requestScope.productTyped}">
+                        <option value="${productTyped.id}">${productTyped.name}</option>
+                    </c:forEach>
                 </select>
                 <i></i>
             </li>

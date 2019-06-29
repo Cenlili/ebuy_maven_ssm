@@ -90,11 +90,11 @@
     </select>
 
     <select id="getProductTypeList" resultType="Product">
-        select * from product where productTypeId=#{productTypeId} 
+        select * from product where productTypeId=#{productTypeId}
     </select>
 
     <select id="getProductTypePage" resultType="Product">
-        select * from product where productTypeId=#{productTypeId} limit 0,#{pageSize}
+        select * from product where productTypeId=#{productTypeId}
     </select>
 
 </mapper>
