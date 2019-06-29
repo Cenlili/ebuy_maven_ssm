@@ -6,6 +6,7 @@ import com.lcvc.ebuy_maven_ssm.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,6 +46,7 @@ public class ProductServiceIpml implements ProductService{
     @Override
     public boolean saveProduct(Product product){
         boolean judge=false;
+        product.setCreateTime(new Date());
         int i=productDao.saveProduct(product);
         if(i>0){
             judge=true;
@@ -133,7 +135,7 @@ public class ProductServiceIpml implements ProductService{
     }
 
     @Override
-    public List<Product> getProductTypeList(Integer id){
+    public List<Product> getProductTypeList(Integer id)    {
         return productDao.getProductTypeList(id);
     }
 
