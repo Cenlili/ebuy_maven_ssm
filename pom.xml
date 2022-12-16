@@ -27,7 +27,7 @@
     <mysql.version>5.1.2</mysql.version>
 
     <!--导入spring需要的包-->
-    <spring.version>4.3.10.RELEASE</spring.version>
+    <spring.version>5.2.20.RELEASE</spring.version>
     <!--在使用自定义AOP的时候需要导入-->
     <aspectj.version>1.8.9</aspectj.version>
     <!--commons-fileupload包，用于文件上传，此处用于搭配kindeditor插件。配置该类后，maven会自动下载依赖的commons-io包-->
